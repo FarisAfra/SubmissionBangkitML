@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Asclepius" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="poppinsExtraLight">
+        <item name="fontFamily">@font/poppins_extralight</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsLight">
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsRegular">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsMedium">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsSemiBold">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsBold">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsExtraBold">
+        <item name="fontFamily">@font/poppins_extrabold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+    <style name="poppinsBlack">
+        <item name="fontFamily">@font/poppins_black</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+</resources>
