@@ -3,7 +3,9 @@ package com.dicoding.asclepius.view
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityResultBinding
 import com.dicoding.asclepius.helper.ImageClassifierHelper
 import org.tensorflow.lite.task.vision.classifier.Classifications
@@ -13,6 +15,7 @@ class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding
     private lateinit var imageClassifierHelper: ImageClassifierHelper
+    private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,9 @@ class ResultActivity : AppCompatActivity() {
                 context = this,
                 classifierListener = object : ImageClassifierHelper.ClassifierListener {
                     override fun onError(error: String) {
-                        // Handle error jika diperlukan
+                        runOnUiThread {
+                            Toast.makeText(this@ResultActivity, "gagal melakukan analisis pada gambar", Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                     override fun onResults(
@@ -55,6 +60,23 @@ class ResultActivity : AppCompatActivity() {
             )
 
             imageClassifierHelper.classifyImage(bitmap)
+        }
+
+        binding.toggleFav.setOnCheckedChangeListener { buttonView, isChecked ->
+            isFavorite = isChecked
+            // Sesuaikan tampilan ToggleButton sesuai dengan keadaan favorit
+            updateToggleButtonBackground()
+        }
+
+        updateToggleButtonBackground()
+    }
+    private fun updateToggleButtonBackground() {
+        if (isFavorite) {
+            // Jika favorit, atur gambar latar belakang menjadi gambar saat aktif
+            binding.toggleFav.setBackgroundResource(R.drawable.favbuttonon)
+        } else {
+            // Jika tidak favorit, atur gambar latar belakang menjadi gambar saat tidak aktif
+            binding.toggleFav.setBackgroundResource(R.drawable.favbuttonoff)
         }
     }
 }
