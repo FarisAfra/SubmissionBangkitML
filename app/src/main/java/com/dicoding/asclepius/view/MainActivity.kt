@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.analyzeButton.setOnClickListener { moveToResult() }
         binding.resetImageButton.setOnClickListener { resetImage() }
+        binding.historyButton.setOnClickListener { moveToHistory() }
     }
 
     private fun startGallery() {
@@ -70,7 +71,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startCrop(uri: Uri) {
-        val destinationUri = Uri.fromFile(File(cacheDir, "cropped_image.jpg"))
+        val fileName = "${System.currentTimeMillis()}_cropped_image.jpg"
+        val destinationUri = Uri.fromFile(File(cacheDir, fileName)) // Ganti cacheDir dengan lokasi penyimpanan yang Anda inginkan
         val uCrop = UCrop.of(uri, destinationUri)
 
         // Konfigurasi UCrop (opsional)
@@ -81,17 +83,6 @@ class MainActivity : AppCompatActivity() {
 
         // Meluncurkan aktivitas pemangkasan gambar dengan launcher untuk hasil kembali
         uCropLauncher.launch(intent)
-    }
-
-    private val launcherGallery = registerForActivityResult(
-        ActivityResultContracts.PickVisualMedia()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            currentImageUri = uri
-            showImage()
-        } else {
-            Log.d("Photo Picker", "No media selected")
-        }
     }
 
     private fun showImage() {
@@ -109,6 +100,11 @@ class MainActivity : AppCompatActivity() {
     private fun moveToResult() {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra(EXTRA_IMAGE, currentImageUri)
+        startActivity(intent)
+    }
+
+    private fun moveToHistory() {
+        val intent = Intent(this, SavedActivity::class.java)
         startActivity(intent)
     }
 

@@ -13,12 +13,16 @@
         <TextView
             android:id="@+id/header"
             style="@style/poppinsExtraBold"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/header"
             android:textAlignment="center"
             android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/toggle_fav"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -26,7 +30,7 @@
             style="@style/poppinsLight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/addImageHeader"
+            android:text="@string/hasilAnalisa"
             android:textAlignment="center"
             android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@+id/header"
@@ -67,21 +71,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/resultimage" />
-
-            <ToggleButton
-                android:id="@+id/toggle_fav"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/favbuttonoff"
-                android:text="ToggleButton"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:textOff=" "
-                android:textOn=" "
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -178,6 +167,32 @@
             app:layout_constraintStart_toStartOf="@+id/historyButton"
             app:layout_constraintTop_toTopOf="@+id/historyButton"
             android:gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/header"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <ToggleButton
+            android:id="@+id/toggle_fav"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/favbuttonoff"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="ToggleButton"
+            android:textOff=" "
+            android:textOn=" "
+            app:layout_constraintBottom_toBottomOf="@+id/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

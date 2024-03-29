@@ -1,13 +1,18 @@
 package com.dicoding.asclepius.view
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityResultBinding
+import com.dicoding.asclepius.db.Prediction
+import com.dicoding.asclepius.db.PredictionDatabase
 import com.dicoding.asclepius.helper.ImageClassifierHelper
+import kotlinx.coroutines.launch
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.text.NumberFormat
 
@@ -15,6 +20,9 @@ class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding
     private lateinit var imageClassifierHelper: ImageClassifierHelper
+    private lateinit var imageUri: Uri
+    private var label: String = ""
+    private var score: Float = 0.0f
     private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +30,7 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val imageUri = intent.getParcelableExtra<Uri>(MainActivity.EXTRA_IMAGE)
+        imageUri = intent.getParcelableExtra<Uri>(MainActivity.EXTRA_IMAGE) ?: return
 
         imageUri?.let {
             val inputStream = contentResolver.openInputStream(it)
@@ -44,7 +52,6 @@ class ResultActivity : AppCompatActivity() {
                     ) {
                         results?.let {
                             if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
-                                println(it)
                                 val sortedCategories =
                                     it[0].categories.sortedByDescending { it?.score }
                                 val displayResult =
@@ -53,6 +60,10 @@ class ResultActivity : AppCompatActivity() {
                                             .format(it.score).trim()
                                     }
                                 binding.resultText.text = displayResult
+
+                                // Simpan label dan score untuk disimpan nanti
+                                label = sortedCategories.first().label
+                                score = sortedCategories.first().score
                             }
                         }
                     }
@@ -66,9 +77,22 @@ class ResultActivity : AppCompatActivity() {
             isFavorite = isChecked
             // Sesuaikan tampilan ToggleButton sesuai dengan keadaan favorit
             updateToggleButtonBackground()
+            savePredictionToDatabase()
         }
 
         updateToggleButtonBackground()
+
+        binding.historyButton.setOnClickListener {
+            moveToHistory()
+        }
+
+        binding.backButton.setOnClickListener {
+            moveToMain()
+        }
+
+        binding.analyzeButton.setOnClickListener {
+            moveToMain()
+        }
     }
     private fun updateToggleButtonBackground() {
         if (isFavorite) {
@@ -79,4 +103,29 @@ class ResultActivity : AppCompatActivity() {
             binding.toggleFav.setBackgroundResource(R.drawable.favbuttonoff)
         }
     }
+
+    private fun savePredictionToDatabase() {
+        imageUri?.let { uri ->
+            lifecycleScope.launch {
+                if (isFavorite) {
+                    val prediction = Prediction(uri.toString(), label, score)
+                    PredictionDatabase.getDatabase(this@ResultActivity)?.predictionDao()?.insertPrediction(prediction)
+                } else {
+                    // Jika toggle non-aktif, hapus data dari database
+                    PredictionDatabase.getDatabase(this@ResultActivity)?.predictionDao()?.deletePredictionByUri(uri.toString())
+                }
+            }
+        }
+    }
+
+    private fun moveToHistory() {
+        val intent = Intent(this, SavedActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun moveToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
 }
