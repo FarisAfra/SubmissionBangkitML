@@ -61,7 +61,6 @@ class ResultActivity : AppCompatActivity() {
                                     }
                                 binding.resultText.text = displayResult
 
-                                // Simpan label dan score untuk disimpan nanti
                                 label = sortedCategories.first().label
                                 score = sortedCategories.first().score
                             }
@@ -75,7 +74,6 @@ class ResultActivity : AppCompatActivity() {
 
         binding.toggleFav.setOnCheckedChangeListener { buttonView, isChecked ->
             isFavorite = isChecked
-            // Sesuaikan tampilan ToggleButton sesuai dengan keadaan favorit
             updateToggleButtonBackground()
             savePredictionToDatabase()
         }
@@ -93,13 +91,15 @@ class ResultActivity : AppCompatActivity() {
         binding.analyzeButton.setOnClickListener {
             moveToMain()
         }
+
+        binding.artikelButton.setOnClickListener {
+            moveToNews()
+        }
     }
     private fun updateToggleButtonBackground() {
         if (isFavorite) {
-            // Jika favorit, atur gambar latar belakang menjadi gambar saat aktif
             binding.toggleFav.setBackgroundResource(R.drawable.favbuttonon)
         } else {
-            // Jika tidak favorit, atur gambar latar belakang menjadi gambar saat tidak aktif
             binding.toggleFav.setBackgroundResource(R.drawable.favbuttonoff)
         }
     }
@@ -111,7 +111,6 @@ class ResultActivity : AppCompatActivity() {
                     val prediction = Prediction(uri.toString(), label, score)
                     PredictionDatabase.getDatabase(this@ResultActivity)?.predictionDao()?.insertPrediction(prediction)
                 } else {
-                    // Jika toggle non-aktif, hapus data dari database
                     PredictionDatabase.getDatabase(this@ResultActivity)?.predictionDao()?.deletePredictionByUri(uri.toString())
                 }
             }
@@ -125,6 +124,11 @@ class ResultActivity : AppCompatActivity() {
 
     private fun moveToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun moveToNews() {
+        val intent = Intent(this, NewsActivity::class.java)
         startActivity(intent)
     }
 

@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.asclepius.R
 import com.dicoding.asclepius.adapter.OnDeleteClickListener
 import com.dicoding.asclepius.adapter.PredictionAdapter
 import com.dicoding.asclepius.databinding.ActivitySavedBinding
@@ -28,7 +26,6 @@ class SavedActivity : AppCompatActivity(), OnDeleteClickListener {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = PredictionAdapter(this)
 
-        // Ambil data dari database
         val predictionDao = PredictionDatabase.getDatabase(this)?.predictionDao()
         predictionDao?.getAllPredictions()?.observe(this, { predictions ->
             predictions?.let {
@@ -44,12 +41,10 @@ class SavedActivity : AppCompatActivity(), OnDeleteClickListener {
     }
 
     override fun onDeleteClick(prediction: Prediction) {
-        // Hapus data item dari sumber data (misalnya database)
         val predictionDao = PredictionDatabase.getDatabase(this)?.predictionDao()
         CoroutineScope(Dispatchers.IO).launch {
             predictionDao?.deletePrediction(prediction)
             withContext(Dispatchers.Main) {
-                // Perbarui tampilan RecyclerView
                 adapter.notifyDataSetChanged()
             }
         }

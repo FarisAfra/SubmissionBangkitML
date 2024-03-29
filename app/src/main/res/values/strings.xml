@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Asclepius</string>
+    <string name="app_name">Cancer Detector</string>
     <string name="camera_x">CameraX</string>
     <string name="camera">Kamera</string>
     <string name="gallery">Galeri</string>
@@ -19,4 +19,22 @@
     <string name="hasilAnalisa">Hasil Analisa Gambar</string>
     <string name="riwayatAnalisa">Riwayat Analisa Tersimpan</string>
     <string name="analisisGambar">Analisis Gambar</string>
+    <string name="previewImage">Preview Image Analysis</string>
+    <string name="tombolGallery">Tombol Gallery atau Tambah Gambar</string>
+    <string name="tombolAnalisis">Tombol Analisis</string>
+    <string name="tombolArtikel">Tombol Artikel</string>
+    <string name="tombolRiwayat">Tombol Riwayat / Tersimpan</string>
+    <string name="farisAfra">Faris Afra M - MD 44</string>
+    <string name="tombolResetGambar">Tombol Reset Gambar</string>
+    <string name="tombolKembali">Tombol Kembali</string>
+    <string name="gambarResult">Gambar Hasil Prediksi</string>
+    <string name="toggleButton">ToggleButton</string>
+    <string name="titleArtikel">Title Artikel</string>
+    <string name="gambarArtikel">Gambar Artikel</string>
+    <string name="authorArtikel">Author Artikel</string>
+    <string name="publishArtikel">Publish At</string>
+    <string name="description">Description...</string>
+    <string name="lebihLanjut">Lebih Lanjut</string>
+    <string name="tombolDetailArtikel">Tombol Detail Artikel</string>
+    <string name="tombolHapus">Tombol Hapus</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SavedActivity">
+    tools:context=".view.NewsActivity">
 
     <TextView
         android:id="@+id/header"
@@ -22,11 +22,22 @@
         style="@style/poppinsLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/riwayatAnalisa"
+        android:text="@string/artikelKangker"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/header"
         tools:layout_editor_absoluteX="-16dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -52,6 +52,7 @@
 
         <ImageView
             android:id="@+id/previewImageView"
+            android:contentDescription="@string/previewImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -68,6 +69,7 @@
 
     <ImageButton
         android:id="@+id/galleryButton"
+        android:contentDescription="@string/tombolGallery"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -93,6 +95,7 @@
 
     <ImageButton
         android:id="@+id/analyzeButton"
+        android:contentDescription="@string/tombolAnalisis"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -119,6 +122,7 @@
 
     <ImageButton
         android:id="@+id/historyButton"
+        android:contentDescription="@string/tombolRiwayat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -143,6 +147,7 @@
 
     <ImageButton
         android:id="@+id/artikelButton"
+        android:contentDescription="@string/tombolArtikel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -183,13 +188,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        android:text="Faris Afra M - MD 44"
+        android:text="@string/farisAfra"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageButton
         android:id="@+id/resetImageButton"
+        android:contentDescription="@string/tombolResetGambar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"

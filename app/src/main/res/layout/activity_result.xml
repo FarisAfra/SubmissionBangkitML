@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/header"
@@ -60,6 +60,7 @@
 
             <ImageView
                 android:id="@+id/result_image"
+                android:contentDescription="@string/gambarResult"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -75,7 +76,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/header_result"
+            android:id="@+id/headerResult"
             style="@style/poppinsMedium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -93,10 +94,11 @@
             android:text="@string/result"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@+id/header_result" />
+            app:layout_constraintTop_toBottomOf="@+id/headerResult" />
 
         <ImageButton
             android:id="@+id/artikelButton"
+            android:contentDescription="@string/tombolArtikel"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -121,6 +123,7 @@
 
         <ImageButton
             android:id="@+id/analyzeButton"
+            android:contentDescription="@string/tombolAnalisis"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -146,6 +149,7 @@
 
         <ImageButton
             android:id="@+id/historyButton"
+            android:contentDescription="@string/tombolRiwayat"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -170,6 +174,7 @@
 
         <ImageButton
             android:id="@+id/backButton"
+            android:contentDescription="@string/tombolKembali"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
@@ -187,7 +192,7 @@
             android:background="@drawable/favbuttonoff"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="ToggleButton"
+            android:text="@string/toggleButton"
             android:textOff=" "
             android:textOn=" "
             app:layout_constraintBottom_toBottomOf="@+id/header"
@@ -195,24 +200,4 @@
             app:layout_constraintTop_toTopOf="@+id/header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/result_image"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="400dp"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:srcCompat="@drawable/ic_place_holder"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/result_text"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="16dp"-->
-<!--            android:text="@string/result" />-->
-<!--    </LinearLayout>-->
 </ScrollView>

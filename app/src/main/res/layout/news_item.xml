@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_rounded_corner"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="10dp"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivArtikel"
+        android:contentDescription="@string/gambarArtikel"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corner"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_place_holder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/poppinsBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:maxLines="2"
+        android:text="@string/titleArtikel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ivArtikel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        style="@style/poppinsSemiBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/authorArtikel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/tvPublish"
+        app:layout_constraintTop_toBottomOf="@+id/tvPublish" />
+
+    <TextView
+        android:id="@+id/tvPublish"
+        style="@style/poppinsRegular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:text="@string/publishArtikel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@+id/ivArtikel" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/poppinsMedium"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:maxLines="6"
+        android:text="@string/description"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivArtikel"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+        app:layout_constraintStart_toEndOf="@+id/ivArtikel"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <ImageButton
+        android:id="@+id/detailArtikel"
+        android:contentDescription="@string/tombolDetailArtikel"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corner_purple"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+        app:layout_constraintStart_toEndOf="@+id/tvPublish"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/poppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/lebihLanjut"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailArtikel"
+        app:layout_constraintEnd_toEndOf="@+id/detailArtikel"
+        app:layout_constraintStart_toStartOf="@+id/detailArtikel"
+        app:layout_constraintTop_toTopOf="@+id/detailArtikel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

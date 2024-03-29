@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.asclepius.db.Prediction
 import com.dicoding.asclepius.R
-import java.text.NumberFormat
-import java.util.Locale
 
 class PredictionAdapter(private val listener: OnDeleteClickListener) : RecyclerView.Adapter<PredictionAdapter.PredictionViewHolder>() {
     private var predictionList: List<Prediction> = emptyList()
