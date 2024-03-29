@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="325dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/bg_rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/bg_rounded_corner_purple"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/bg_rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Analisis"
+        android:text="@string/analisisGambar"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/analyzeButton"
@@ -122,7 +122,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/bg_rounded_corner_purple"
         app:layout_constraintEnd_toEndOf="parent"
@@ -140,6 +140,32 @@
         app:layout_constraintStart_toStartOf="@+id/historyButton"
         app:layout_constraintTop_toTopOf="@+id/historyButton"
         android:gravity="center"/>
+
+    <ImageButton
+        android:id="@+id/artikelButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_rounded_corner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyButton" />
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/poppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/artikelKangker"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/artikelButton"
+        app:layout_constraintEnd_toEndOf="@+id/artikelButton"
+        app:layout_constraintStart_toStartOf="@+id/artikelButton"
+        app:layout_constraintTop_toTopOf="@+id/artikelButton" />
 
     <TextView
         android:id="@+id/submissionML"
@@ -164,12 +190,13 @@
 
     <ImageButton
         android:id="@+id/resetImageButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="-8dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/resetimage"
-        app:layout_constraintBottom_toBottomOf="@+id/llImageView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/llImageView"
+        app:layout_constraintTop_toTopOf="@+id/llImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

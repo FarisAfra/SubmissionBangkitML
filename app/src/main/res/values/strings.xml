@@ -18,4 +18,5 @@
     <string name="score">Score: 0%</string>
     <string name="hasilAnalisa">Hasil Analisa Gambar</string>
     <string name="riwayatAnalisa">Riwayat Analisa Tersimpan</string>
+    <string name="analisisGambar">Analisis Gambar</string>
 </resources>

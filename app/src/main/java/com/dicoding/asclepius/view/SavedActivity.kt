@@ -1,5 +1,6 @@
 package com.dicoding.asclepius.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.adapter.OnDeleteClickListener
 import com.dicoding.asclepius.adapter.PredictionAdapter
+import com.dicoding.asclepius.databinding.ActivitySavedBinding
 import com.dicoding.asclepius.db.Prediction
 import com.dicoding.asclepius.db.PredictionDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -15,15 +17,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SavedActivity : AppCompatActivity(), OnDeleteClickListener {
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivitySavedBinding
     private lateinit var adapter: PredictionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_saved)
+        binding = ActivitySavedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = PredictionAdapter(this)
 
         // Ambil data dari database
@@ -34,7 +36,11 @@ class SavedActivity : AppCompatActivity(), OnDeleteClickListener {
             }
         })
 
-        recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter
+
+        binding.backButton.setOnClickListener {
+            moveToMain()
+        }
     }
 
     override fun onDeleteClick(prediction: Prediction) {
@@ -49,4 +55,8 @@ class SavedActivity : AppCompatActivity(), OnDeleteClickListener {
         }
     }
 
+    private fun moveToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 }

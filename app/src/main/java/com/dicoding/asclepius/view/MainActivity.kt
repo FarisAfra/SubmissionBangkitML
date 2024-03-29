@@ -9,6 +9,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                 // Menetapkan URI gambar yang dipangkas ke ImageView
                 currentImageUri = resultUri
                 showImage()
+                showResetBtn()
             }
         } else if (result.resultCode == UCrop.RESULT_ERROR) {
             val error = UCrop.getError(result.data!!)
@@ -98,9 +100,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun moveToResult() {
-        val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra(EXTRA_IMAGE, currentImageUri)
-        startActivity(intent)
+        if (currentImageUri != null) {
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra(EXTRA_IMAGE, currentImageUri)
+            startActivity(intent)
+        } else {
+            showToast("Silakan pilih gambar terlebih dahulu")
+        }
     }
 
     private fun moveToHistory() {
@@ -110,7 +116,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun resetImage() {
         currentImageUri = null
-        showImage()
+        Glide.with(this)
+            .load(R.drawable.addimage)
+            .into(binding.previewImageView)
+        binding.resetImageButton.visibility = View.GONE
+    }
+
+    private fun showResetBtn() {
+        binding.resetImageButton.visibility = View.VISIBLE
     }
 
     private fun showToast(message: String) {
